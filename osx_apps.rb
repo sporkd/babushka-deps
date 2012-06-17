@@ -3,7 +3,7 @@ dep 'osx apps' do
   requires 'Firefox.app',
            'Google Chrome.app',
            'Skype.app',
-           'Sparrow.app',
+           'Sparrow.app'
            # 'Mailplane.app',
            # 'Transmission.app'
            # 'HipChat'
@@ -19,8 +19,8 @@ dep 'osx apps' do
            # 'VirtualBox.installer' 
 
   # System utilities
-  requires 'Dropbox.app',
-  requires 'Growl.installer'
+  requires 'Dropbox.app'
+           # 'Growl.installer'
 
   # Mac App Store Apps (install through the store)
            # 'Cloud.app',

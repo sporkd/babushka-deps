@@ -1,6 +1,7 @@
 dep 'env' do
-  # requires 'babushka-deps.cloned'
-  username.default(shell('whoami'))
+  requires 'babushka-deps.cloned'
+
+  username = shell('whoami')
 
   # if Prompt.confirm("Install xcode commandline tools only?")
   #   requires 'xcode commandline tools'
@@ -21,6 +22,6 @@ end
 
 dep 'babushka-deps.cloned' do
   requires 'github has my public key'
-  repo 'git@github.com:sporkd/babushka-deps.git'
+  repo "git@github.com:#{var :github_username}/babushka-deps.git"
   destination '~/.babushka/deps'
 end

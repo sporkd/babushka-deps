@@ -1,7 +1,7 @@
-dep 'env' do
+dep 'env', :github_username do
   username = shell('whoami')
-  github_username = get_value("Enter your github username")
 
+  github_username.ask("What github account would you like to install from").default('sporkd')
   requires 'babushka-deps.cloned'.with(:github_username => github_username)
 
   # if Prompt.confirm("Install xcode commandline tools only?")

@@ -8,6 +8,7 @@ dep 'dotfiles installed' do
 end
 
 dep 'dotfiles.cloned' do
+  requires 'github has my public key'
   repo 'git@github.com:sporkd/dotfiles.git'
   destination '~/.dotfiles'
 end

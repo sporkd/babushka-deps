@@ -1,10 +1,7 @@
 dep 'env', :github_username do
   username = shell('whoami')
 
-  github_username.ask("What github account would you like to install from").default('sporkd')
-  requires 'babushka-deps.cloned'.with(:github_username => github_username)
-
-  if confirm("Install xcode commandline tools only?")
+  if confirm("Install xcode commandline tools", :default => 'y')
     requires 'xcode commandline tools'
   else
     requires 'xcode tools'
@@ -19,10 +16,4 @@ dep 'env', :github_username do
   after {
     log_ok "Done. Your env is ready!"
   }
-end
-
-dep 'babushka-deps.cloned', :github_username do
-  requires 'github has my public key'.with(:github_username => github_username)
-  repo "git@github.com:#{ github_username }/babushka-deps.git"
-  destination '~/.babushka/deps'
 end

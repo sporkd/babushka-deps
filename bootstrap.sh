@@ -55,7 +55,7 @@ else
   echo "/usr/local/babushka does not exist. That's OK. We'll create it later."
 fi
 
-sleep 1
+sleep 2
 
 echo
 echo "OK. Permissions are good to go. Next we will install Babushka."
@@ -70,14 +70,20 @@ echo
 echo "Done. Babushka was installed sucessfully!"
 echo
 
-sleep 5
+sleep 2
+
+echo
+echo "Bootstrapping your babushka-deps repo."
+echo
+
+babushka sporkd:bootstrap
 
 echo
 echo "OK. Ready to configure your environment."
-echo
+echo 
 
 babushka sporkd:env
 
 echo
-echo "Bootstrap is complete."
+echo "Done."
 echo 

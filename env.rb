@@ -4,11 +4,11 @@ dep 'env', :github_username do
   github_username.ask("What github account would you like to install from").default('sporkd')
   requires 'babushka-deps.cloned'.with(:github_username => github_username)
 
-  # if Prompt.confirm("Install xcode commandline tools only?")
-  #   requires 'xcode commandline tools'
-  # else
-  #   requires 'xcode tools'
-  # end
+  if confirm("Install xcode commandline tools only?")
+    requires 'xcode commandline tools'
+  else
+    requires 'xcode tools'
+  end
 
   # requires 'osx prefs'
   # requires 'packages'
@@ -17,7 +17,7 @@ dep 'env', :github_username do
   # requires 'benhoskings:zsh'.with(username)
 
   after {
-    log "Done. Your env is ready!"
+    log_ok "Done. Your env is ready!"
   }
 end
 

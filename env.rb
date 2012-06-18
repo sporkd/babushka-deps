@@ -1,7 +1,8 @@
 dep 'env' do
-  requires 'babushka-deps.cloned'
-
   username = shell('whoami')
+  github_username = get_value("Enter your github username")
+
+  requires 'babushka-deps.cloned'.with(:github_username => github_username)
 
   # if Prompt.confirm("Install xcode commandline tools only?")
   #   requires 'xcode commandline tools'
@@ -20,8 +21,8 @@ dep 'env' do
   }
 end
 
-dep 'babushka-deps.cloned' do
-  requires 'github has my public key'
-  repo "git@github.com:#{var :github_username}/babushka-deps.git"
+dep 'babushka-deps.cloned', :github_username do
+  requires 'github has my public key'.with(:github_username => github_username)
+  repo "git@github.com:#{ github_username }/babushka-deps.git"
   destination '~/.babushka/deps'
 end

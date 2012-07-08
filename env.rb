@@ -4,6 +4,13 @@ dep 'env', :github_username do
   requires 'xcode commandline tools'
   requires 'osx prefs'
   requires 'packages'
+
+  requires [
+    'imagemagick',
+    'redis',
+    'mongodb'
+  ]
+
   requires 'dotfiles'
   requires 'osx applications'
   requires 'benhoskings:zsh'.with(username)

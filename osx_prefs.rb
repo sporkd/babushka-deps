@@ -73,6 +73,7 @@ dep 'mathiasbynens defaults' do
   shell 'defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false'
 
   # Set a blazingly fast keyboard repeat rate
+  shell 'defaults write NSGlobalDomain InitialKeyRepeat -int 15'
   shell 'defaults write NSGlobalDomain KeyRepeat -int 0'
 
   # Disable auto-correct

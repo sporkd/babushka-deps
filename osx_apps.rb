@@ -1,30 +1,25 @@
 dep 'osx apps' do
 
-  requires 'Firefox.app',
-           'Google Chrome.app',
-           'Skype.app',
-           'Sparrow.app'
-           # 'Mailplane.app',
-           # 'Transmission.app'
-           # 'HipChat'
-           # 'OmniGraffle Professional 5.app',
+  # Browsers
+  requires 'Firefox.app'
+  requires 'Google Chrome.app'
+  # requires 'Chromium.app'
+
+  # Mail and Communication
+  requires 'Skype.app'
+  requires 'Sparrow.app'
+  # requires 'HipChat'
 
   # Development
-  requires 'GitX.app',
-           'iTerm.app',
-           'MacVim.app',
-           'TextMate.app',
-           'Sublime Text 2.app'
-           # 'Sequel Pro.app',
-           # 'VirtualBox.installer' 
-
-  # System utilities
-  requires 'Dropbox.app'
-           # 'Growl.installer'
+  requires 'iTerm.app'
+  requires 'GitX.app'
+  requires 'MacVim.app'
+  requires 'TextMate.app'
+  requires 'Sublime Text 2.app'
 
   # Mac App Store Apps (install through the store)
-           # 'Cloud.app',
-           # 'Twitter.app'
+  # requires 'Cloud.app'
+  # requires 'Twitter.app'
 end
 
 dep 'Chromium.app' do
@@ -46,12 +41,12 @@ dep "Chromium.app download cleared" do
   meet { in_download_dir { 'chrome-mac.zip'.p.rm } }
 end
 
-dep 'Dropbox.app' do
-  source 'http://cdn.dropbox.com/Dropbox%201.4.9.dmg'
+dep 'Firefox.app' do
+  source 'http://mozilla.cdn.leaseweb.com/firefox/releases/13.0.1/mac/en-US/Firefox%2013.0.1.dmg'
 end
 
-dep 'Firefox.app' do
-  source 'http://www.mozilla.org/products/download.html?product=firefox-13.0.1&os=osx&lang=en-US'
+dep 'iTerm.app' do
+  source 'http://iterm2.googlecode.com/files/iTerm2_v1_0_0.zip'
 end
 
 dep 'GitX.app' do
@@ -62,21 +57,6 @@ dep 'Google Chrome.app' do
   source 'https://dl-ssl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg'
 end
 
-dep 'iTerm.app' do
-  meet {
-    handle_source 'http://iterm2.googlecode.com/files/iTerm2_v1_0_0.zip' do |zip|
-      in_build_dir do |path|
-        app = path / zip.path.without_extension.basename / 'iTerm.app'
-        app.copy '/Applications'
-      end
-    end
-  }
-end
-
-dep 'Skitch.app' do
-  source 'http://get.skitch.com/skitch.zip'
-end
-
 dep 'Skype.app' do
   source 'http://www.skype.com/go/getskype-macosx.dmg'
 end
@@ -85,6 +65,6 @@ dep 'Sparrow.app' do
   source 'http://download.sparrowmailapp.com/release/Sparrow-latest.dmg'
 end
 
-dep 'Vim.app' do
-  source 'http://macvim.org/OSX/files/binaries/OSX10_4/Vim7.0-univ.tar.bz2'
+dep 'MacVim.app' do
+  source 'https://github.com/downloads/b4winckler/macvim/MacVim-snapshot-64.tbz'
 end

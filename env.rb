@@ -1,19 +1,16 @@
-dep 'env', :github_username do
-  username = shell('whoami')
-
+dep 'env' do
   requires 'xcode commandline tools'
   requires 'osx prefs'
-  requires 'packages'
-
-  requires [
-    'imagemagick',
-    'redis',
-    'mongodb'
-  ]
-
   requires 'dotfiles'
-  requires 'osx applications'
-  requires 'benhoskings:zsh'.with(username)
+
+  requires 'packages'
+  requires 'imagemagick'
+  requires 'redis'
+  requires 'mongodb'
+  requires 'pow'
+
+  requires 'osx apps'
+  requires 'dropbox'
 
   after {
     log_ok "Done. Your env is ready!"

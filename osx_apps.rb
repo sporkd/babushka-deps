@@ -13,9 +13,7 @@ dep 'osx apps' do
   # Development
   requires 'iTerm.app'
   requires 'GitX.app'
-  requires 'MacVim.app'
   requires 'TextMate.app'
-  requires 'Sublime Text 2.app'
 
   # Mac App Store Apps (install through the store)
   # requires 'Cloud.app'
@@ -63,14 +61,5 @@ end
 
 dep 'Sparrow.app' do
   source 'http://download.sparrowmailapp.com/release/Sparrow-latest.dmg'
-end
-
-dep 'MacVim.app' do
-  source 'https://github.com/downloads/b4winckler/macvim/MacVim-snapshot-64.tbz'
-end
-
-dep 'mvim.cmd' do
-  requires 'MacVim.app'
-  source "/Applications/MacVim.app/Contents/MacOS/MacVim"
 end
 

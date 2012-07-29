@@ -11,6 +11,7 @@ dep 'env' do
 
   requires 'osx apps'
   requires 'Dropbox'
+  requires 'MacVim'
   requires 'Sublime Text 2'
 
   after {

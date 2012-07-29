@@ -1,4 +1,4 @@
-dep 'dropbox' do
+dep 'Dropbox' do
   requires 'Dropbox.app'
 end
 

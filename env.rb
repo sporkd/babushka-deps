@@ -10,7 +10,8 @@ dep 'env' do
   requires 'pow'
 
   requires 'osx apps'
-  requires 'dropbox'
+  requires 'Dropbox'
+  requires 'Sublime Text 2'
 
   after {
     log_ok "Done. Your env is ready!"

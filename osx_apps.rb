@@ -68,3 +68,9 @@ end
 dep 'MacVim.app' do
   source 'https://github.com/downloads/b4winckler/macvim/MacVim-snapshot-64.tbz'
 end
+
+dep 'mvim.cmd' do
+  requires 'MacVim.app'
+  source "/Applications/MacVim.app/Contents/MacOS/MacVim"
+end
+

@@ -11,5 +11,4 @@ end
 dep 'subl.cmd' do
   # requires 'Sublime Text 2.app'
   source "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl"
-  softlink true
 end

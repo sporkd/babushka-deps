@@ -2,6 +2,8 @@ dep 'packages' do
   requires { on :osx, 'homebrew' }
 
   requires [
+    'grc.managed',
+    'coreutils.managed',
     'ack.managed',
     'tig.managed',
     'tmux.managed',
@@ -9,6 +11,10 @@ dep 'packages' do
     'wget.managed'
   ]
 end
+
+dep 'grc.managed'
+
+dep 'coreutils.managed'
 
 dep 'ack.managed'
 

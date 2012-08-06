@@ -5,7 +5,7 @@ end
 
 dep 'dotfiles installed' do
   requires 'dotfiles.cloned'
-  met? { "~/.zshrc".p.exists? }
+  met? { '~/.zshrc'.p.exists? }
   meet {
     cd '~/.dotfiles' do
       log_block "Installing dotfiles" do

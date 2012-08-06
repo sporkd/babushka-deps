@@ -1,0 +1,74 @@
+{
+    // Sets the colors used within the text area
+    "color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+
+    // Note that the font_face and font_size are overriden in the platform
+    // specific settings file, for example, "Preferences (Linux).sublime-settings".
+    // Because of this, setting them here will have no effect: you must set them
+    // in your User File Preferences.
+    //"font_face": "",
+    //"font_size": 10,
+
+    // Columns in which to display vertical rulers
+    "rulers": [80],
+
+    // Set to true to turn spell checking on by default
+    "spell_check": false,
+
+    // The number of spaces a tab is considered equal to
+    "tab_size": 2,
+
+    // Set to true to insert spaces when tab is pressed
+    "translate_tabs_to_spaces": true,
+
+    // Disables horizontal scrolling if enabled.
+    // May be set to true, false, or "auto", where it will be disabled for
+    // source code, and otherwise enabled.
+    "word_wrap": "auto",
+
+    // If enabled, will highlight any line with a caret
+    "highlight_line": true,
+
+    // Set to false to not highlight angle brackets. This only takes effect if
+    // match_brackets is true
+    "match_brackets_angle": true,
+
+    // Set to "none" to turn off drawing white space, "selection" to draw only the
+    // white space within the selection, and "all" to draw all white space
+    "draw_white_space": "all",
+
+    // Set to true to removing trailing white space on save
+    "trim_trailing_white_space_on_save": true,
+
+    // Set to true to ensure the last line of the file ends in a newline
+    // character when saving
+    "ensure_newline_at_eof_on_save": false,
+
+    // Set to true to automatically save files when switching to a different file
+    // or application
+    "save_on_focus_lost": false,
+
+    // Determines what character(s) are used to terminate each line in new files.
+    // Valid values are 'system' (whatever the OS uses), 'windows' (CRLF) and
+    // 'unix' (LF only).
+    "default_line_ending": "unix",
+
+    // When enabled, pressing tab will insert the best matching completion.
+    // When disabled, tab will only trigger snippets or insert a tab.
+    // Shift+tab can be used to insert an explicit tab when tab_completion is
+    // enabled.
+    "tab_completion": true,
+
+    // The theme controls the look of Sublime Text's UI (buttons, tabs, scroll bars, etc)
+    "theme": "Default.sublime-theme",
+
+    // Makes tabs with modified files more visible
+    "highlight_modified_tabs": true,
+
+    // List any packages to ignore here. When removing entries from this list,
+    // a restart may be required if the package contains plugins.
+    "ignored_packages": [],
+
+    // Vintage defaults
+    "vintage_start_in_command_mode": true
+}

@@ -3,7 +3,7 @@ meta :cmd do
   accepts_value_for :copy
 
   def src_path
-    source.gsub(' ', '\ ')
+    source.gsub(/([^\\]) /, '\1\\ ')
   end
 
   def bin_dir

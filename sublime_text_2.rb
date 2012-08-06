@@ -1,13 +1,13 @@
 dep 'Sublime Text 2' do
   requires 'Sublime Text 2.app'
   requires 'Sublime Text 2 theme.cloned'
-  requires 'Sublime Text 2 configured'
+  requires 'Sublime Text 2 preferences'
   requires 'subl.cmd'
 end
 
 dep 'Sublime Text 2.app' do
   source 'http://c758482.r82.cf2.rackcdn.com/Sublime Text 2.0.1.dmg'
-  version '>= 2.0.1' 
+  version '>= 2.0.1'
 end
 
 dep 'Sublime Text 2 theme.cloned' do
@@ -16,7 +16,7 @@ dep 'Sublime Text 2 theme.cloned' do
   destination  "~/Library/Application Support/Sublime Text 2/Packages/Theme - Soda"
 end
 
-dep 'Sublime Text 2 configured' do
+dep 'Sublime Text 2 preferences' do
   requires 'Sublime Text 2.app'
   requires 'Sublime Text 2 theme.cloned'
 

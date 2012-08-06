@@ -1,23 +1,23 @@
 dep 'Sublime Text 2' do
-  # requires 'Sublime Text 2.app'
+  requires 'Sublime Text 2.app'
   requires 'Sublime Text 2 theme.cloned'
   requires 'Sublime Text 2 configured'
   requires 'subl.cmd'
 end
 
 dep 'Sublime Text 2.app' do
-  #TODO: Fix version error
   source 'http://c758482.r82.cf2.rackcdn.com/Sublime Text 2.0.1.dmg'
+  version '>= 2.0.1' 
 end
 
 dep 'Sublime Text 2 theme.cloned' do
-  # requires 'Sublime Text 2.app'
+  requires 'Sublime Text 2.app'
   repo "git://github.com/buymeasoda/soda-theme.git"
   destination  "~/Library/Application Support/Sublime Text 2/Packages/Theme - Soda"
 end
 
 dep 'Sublime Text 2 configured' do
-  # requires 'Sublime Text 2.app'
+  requires 'Sublime Text 2.app'
   requires 'Sublime Text 2 theme.cloned'
 
   def configs_dir
@@ -36,6 +36,6 @@ dep 'Sublime Text 2 configured' do
 end
 
 dep 'subl.cmd' do
-  # requires 'Sublime Text 2.app'
+  requires 'Sublime Text 2.app'
   source "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl"
 end

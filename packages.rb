@@ -14,7 +14,9 @@ end
 
 dep 'grc.managed'
 
-dep 'coreutils.managed'
+dep 'coreutils.managed' do
+  provides 'gls', 'gcat', 'genv'
+end
 
 dep 'ack.managed'
 

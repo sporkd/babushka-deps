@@ -13,7 +13,7 @@ meta :cloned do
 
     met? {
       destination.p.exists? &&
-      shell("git remote -v", :cd => destination_esc)[repo.to_s]
+      shell("git remote -v", :cd => destination)[repo.to_s]
     }
     meet { shell "git clone #{repo} #{destination_esc}" }
   }

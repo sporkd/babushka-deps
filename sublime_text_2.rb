@@ -21,17 +21,13 @@ dep 'Sublime Text 2 preferences' do
   requires 'Sublime Text 2 theme.cloned'
 
   def configs_dir
-    "~/Library/Application Support/Sublime Text 2/Packages/User"
-  end
-
-  def configs_dir_esc
-    configs_dir.gsub(/([^\\]) /, '\1\\ ')
+    "#{ENV['HOME']}/Library/Application Support/Sublime Text 2/Packages/User"
   end
 
   met? { "#{configs_dir}.backup".p.exists? }
   meet {
-    log shell "cp -R #{configs_dir_esc} #{configs_dir_esc}.backup"
-    log shell "cp -fp #{load_path.parent}/sublime_text_2/* #{configs_dir_esc}"
+    log shell "cp -R '#{configs_dir}' '#{configs_dir}.backup'"
+    log shell "cp -fp #{load_path.parent}/sublime_text_2/* '#{configs_dir}'"
   }
 end
 

@@ -1,7 +1,7 @@
 dep 'env' do
   requires 'xcode commandline tools'
   requires 'osx prefs'
-  requires 'dotfiles'
+  requires 'dotfiles'.with(:repo => 'git@github.com:sporkd/dotfiles.git')
 
   requires 'packages'
   requires 'imagemagick'

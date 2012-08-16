@@ -1,10 +1,15 @@
-dep 'bootstrap', :github_username do
-  github_username.ask("What is your github username").default('sporkd')
-  requires 'babushka-deps.cloned'.with(:github_username => github_username)
+dep 'bootstrap' do
+  log "You can keep your own babushka deps in ~/.babushka/deps", :as => :stderr
+  confirm(
+    "Do you hava a babushka-deps git repo to clone?",
+    :otherwise => "No worries. You can create one later."
+  ) do
+    requires 'babushka-deps.cloned'
+  end
 end
 
-dep 'babushka-deps.cloned', :github_username do
-  requires 'github has my public key'.with(:github_username => github_username)
-  repo "git@github.com:#{ github_username }/babushka-deps.git"
+dep 'babushka-deps.cloned', :git_repo do
+  git_repo.ask("Your babushka-deps repo location").default("git@github.com:sporkd/babushka-deps.git")
+  repo git_repo
   destination '~/.babushka/deps'
 end

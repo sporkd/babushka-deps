@@ -2,10 +2,6 @@ meta :cmd do
   accepts_value_for :source
   accepts_value_for :copy
 
-  def source_esc
-    source.gsub(/([^\\]) /, '\1\\ ')
-  end
-
   def bin_dir
     "/usr/local/bin"
   end
@@ -14,23 +10,23 @@ meta :cmd do
     basename
   end
 
-  def bin_path
+  def bin_file
     "#{bin_dir}/#{bin}"
   end
 
   template {
-    met? { bin_path.p.exists? && shell("which '#{bin}'") }
+    met? { bin_file.p.exists? && bin_file.p.executable? }
     meet {
       if copy == true
-        log shell "cp #{source_esc} #{bin_path}", :sudo => !bin_dir.p.writable?
-        unless bin_path.p.executable?
-          log shell "chmod +x #{bin_path}", :sudo => !bin_path.p.writable?
+        log shell "cp -f '#{source.p}' '#{bin_file.p}'", :sudo => !bin_dir.p.writable?
+        unless bin_file.p.executable?
+          log shell "chmod +x '#{bin_file.p}'", :sudo => !bin_file.p.writable?
         end
       else
         unless source.p.executable?
-          log shell "chmod +x #{source_esc}", :sudo => !source.p.writable?
+          log shell "chmod +x '#{source.p}'", :sudo => !source.p.writable?
         end
-        log shell "ln -s #{source_esc} #{bin_path}", :sudo => !bin_dir.p.writable?
+        log shell "ln -sf '#{source.p}' '#{bin_file.p}'", :sudo => !bin_dir.p.writable?
       end
     }
   }

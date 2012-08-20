@@ -3,10 +3,6 @@ meta :cloned do
   accepts_value_for :destination
 
   template {
-    def destination_esc
-      destination.gsub(/([^\\]) /, '\1\\ ')
-    end
-
     if repo.to_s.match(/^git@/)
       requires_when_unmet 'github has my public key'
     end
@@ -15,6 +11,6 @@ meta :cloned do
       destination.p.exists? &&
       shell("git remote -v", :cd => destination)[repo.to_s]
     }
-    meet { shell "git clone #{repo} #{destination_esc}" }
+    meet { shell "git clone #{repo} '#{destination.p}'" }
   }
 end

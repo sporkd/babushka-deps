@@ -58,7 +58,7 @@ end
 
 dep 'dotfiles symlinked' do
   def symlink_paths
-    "~/.dotfiles".p.glob("/*/**{.symlink}")
+    "~/.dotfiles".p.glob("*/**{.symlink}")
   end
 
   def basename_without_ext(path)

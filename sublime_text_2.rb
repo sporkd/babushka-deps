@@ -8,30 +8,15 @@ end
 dep 'Sublime Text 2.app' do
   source 'http://c758482.r82.cf2.rackcdn.com/Sublime Text 2.0.1.dmg'
   version '>= 2.0.1'
-end
 
-dep 'Sublime Text 2 theme.cloned' do
-  requires 'Sublime Text 2.app'
-  repo "git://github.com/buymeasoda/soda-theme.git"
-  destination  "~/Library/Application Support/Sublime Text 2/Packages/Theme - Soda"
-end
-
-dep 'Sublime Text 2 preferences' do
-  requires 'Sublime Text 2.app'
-  requires 'Sublime Text 2 theme.cloned'
-
-  def configs_dir
-    "~/Library/Application Support/Sublime Text 2/Packages/User"
+  def bin_dir
+    (app_location / provides / "Contents/SharedSupport/bin")
   end
 
-  def configs_dir_backup
-    "#{configs_dir}.backup"
-  end
-
-  met? { configs_dir_backup.p.exists? }
-  meet {
-    log shell "cp -R '#{configs_dir.p}' '#{configs_dir_backup.p}'"
-    log shell "cp -fp #{load_path.parent}/sublime_text_2/* '#{configs_dir.p}'"
+  after {
+    system("'#{bin_dir}'/subl --background &")
+    sleep 4
+    log shell "kill `ps -A | awk '/Sublime Text 2.app/{print $1}' | head -1`"
   }
 end
 
@@ -39,3 +24,55 @@ dep 'subl.cmd' do
   requires 'Sublime Text 2.app'
   source "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl"
 end
+
+dep 'Sublime Text 2 backup' do
+  requires 'Sublime Text 2.app'
+
+  def preferences_dir
+    "~/Library/Application Support/Sublime Text 2/Packages/User"
+  end
+
+  def preferences_dir_backup
+    "#{preferences_dir}.backup"
+  end
+
+  met? { preferences_dir_backup.p.exists? }
+  meet {
+    log shell "cp -R '#{preferences_dir.p}' '#{preferences_dir_backup.p}'"
+  }
+end
+
+dep 'Sublime Text 2 theme.cloned' do
+  requires 'Sublime Text 2 backup'
+  repo "git://github.com/buymeasoda/soda-theme.git"
+  destination  "~/Library/Application Support/Sublime Text 2/Packages/Theme - Soda"
+end
+
+dep 'Sublime Text 2 preferences' do
+  requires 'Sublime Text 2 theme.cloned'
+
+  def templates_dir
+    "#{load_path.parent}/sublime_text_2"
+  end
+
+  def templates_paths
+    templates_dir.p.glob("*-{settings,keymap}")
+  end
+
+  def preferences_dir
+    "~/Library/Application Support/Sublime Text 2/Packages/User"
+  end
+
+  met? {
+    preferences = templates_paths.collect do |path|
+      template = (templates_dir / path.p.basename)
+      target = (preferences_dir / path.p.basename)
+      target.exists? && FileUtils.compare_file(template, target)
+    end
+    preferences.empty? || (preferences.uniq == [true])
+  }
+  meet {
+    log shell "cp -fp '#{templates_dir.p}'/* '#{preferences_dir.p}'"
+  }
+end
+

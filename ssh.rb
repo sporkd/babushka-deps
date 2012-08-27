@@ -1,4 +1,4 @@
-dep 'ssh keys', :ssh_dir, :ssh_password do
+dep 'ssh keys generated', :ssh_dir, :ssh_password do
   ssh_dir.ask("Where do you keep your ssh keys").default!('~/.ssh')
   ssh_password.ask("Passphase to encrypt your SSH key")
 

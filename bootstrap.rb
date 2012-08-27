@@ -1,7 +1,7 @@
 dep 'bootstrap' do
-  log "You can keep your own babushka deps in ~/.babushka/deps", :as => :stderr
+  log "Personal babushka deps are kept in ~/.babushka/deps", :as => :stderr
   confirm(
-    "Do you hava a babushka-deps git repo to clone?",
+    "Do you hava a babushka-deps git repo to install?",
     :otherwise => "No worries. You can create one later."
   ) do
     requires 'babushka-deps.cloned'

@@ -1,5 +1,5 @@
 dep 'github has my public key', :github_username, :github_password do
-  requires 'ssh keys'
+  requires 'ssh keys generated'
 
   def github_api
     'https://api.github.com'

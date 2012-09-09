@@ -1,0 +1,9 @@
+{
+  "com.apple.dock": {
+    "autohide": {
+      "description": "Automatically hide and show the Dock",
+      "type": "bool",
+      "value": false
+    }
+  }
+}

@@ -8,6 +8,7 @@ dep 'env' do
   requires 'redis'
   requires 'mongodb'
   requires 'pow'
+  requires 'meld'
 
   requires 'osx apps'
   requires 'Dropbox'

@@ -30,6 +30,3 @@ dep 'tree.managed'
 
 dep 'wget.managed'
 
-dep 'rds-command-line-tools.managed' do
-  provides 'rds'
-end

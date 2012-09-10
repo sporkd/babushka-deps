@@ -72,6 +72,8 @@ dep 'osx defaults', :profile do
       next if domain == "restart"
       defaults.each do |key, fields|
 
+        next if fields['disabled'] == true
+
         description = fields['description']
         if description.blank?
           log "No 'description' given for default: #{domain} #{key}", :as => :error

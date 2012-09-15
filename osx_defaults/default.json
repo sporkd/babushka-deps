@@ -1,24 +1,17 @@
 {
-  "com.apple.dock": {
-    "autohide": {
-      "description": "Automatically hide and show the Dock",
-      "type": "bool",
-      "value": false
-    }
-  },
-
   // Apps that need be restarted before new defaults take effect
   "restart": [
-    // "Address Book",
-    // "Calendar",
-    // "Contacts",
-    "Dock"
-    // "Finder",
-    // "Mail",
-    // "Safari",
-    // "SystemUIServer",
-    // "Terminal",
-    // "iCal",
-    // "iTunes"
+    "Address Book",
+    "Calendar",
+    "Contacts",
+    "Dashboard",
+    "Dock",
+    "Finder",
+    "Mail",
+    "Safari",
+    "SystemUIServer",
+    "Terminal",
+    "iCal",
+    "iTunes"
   ]
 }

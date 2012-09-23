@@ -28,12 +28,12 @@ dep 'osx defaults', :profile do
   end
 
   def read_type(domain, key)
-    type_map = {
-      :integer => 'int',
-      :boolean => 'bool',
-      :dictionary => 'dict'
-    }
     if type = shell("defaults read-type '#{domain}' '#{key}' 2>/dev/null")
+      type_map = {
+        :integer => 'int',
+        :boolean => 'bool',
+        :dictionary => 'dict'
+      }
       type = type.split(' ').last
       type = type_map[type.to_sym] || type
     end

@@ -1,8 +1,10 @@
 dep 'env' do
   requires 'build tools'
   requires 'osx prefs'
-  requires 'dotfiles'.with(:repo => 'git@github.com:sporkd/dotfiles.git')
+  requires 'dotfiles'.with(:git_repo => 'git@github.com:sporkd/dotfiles.git')
+  requires 'zsh'
 
+  # Homebrew
   requires 'packages'
   requires 'imagemagick'
   requires 'redis'
@@ -10,10 +12,21 @@ dep 'env' do
   requires 'pow'
   requires 'meld'
 
-  requires 'osx apps'
-  requires 'Dropbox'
+  requires '1.9.3-p194.rbenv'
+
+  # Browsers
+  requires 'Firefox.app'
+  requires 'Google Chrome.app'
+
+  # Development
+  requires 'iTerm.app'
+  requires 'GitX.app'
   requires 'MacVim'
   requires 'Sublime Text 2'
+
+  # Other
+  requires 'Skype.app'
+  requires 'Dropbox'
 
   after {
     log_ok "Done. Your env is ready!"

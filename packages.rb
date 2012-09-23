@@ -20,8 +20,6 @@ end
 
 dep 'ack.managed'
 
-dep 'growlnotify.managed'
-
 dep 'tig.managed'
 
 dep 'tmux.managed'
@@ -29,4 +27,3 @@ dep 'tmux.managed'
 dep 'tree.managed'
 
 dep 'wget.managed'
-

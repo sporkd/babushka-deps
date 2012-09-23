@@ -2,7 +2,6 @@ dep 'dotfiles', :git_repo do
   requires 'grc.managed'
   requires 'coreutils.managed'
   requires 'dotfiles installed'.with(:git_repo => git_repo)
-  requires 'zsh'
 end
 
 meta :dotfile do

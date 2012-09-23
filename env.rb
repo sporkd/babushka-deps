@@ -23,6 +23,7 @@ dep 'env' do
   requires 'GitX.app'
   requires 'MacVim'
   requires 'Sublime Text 2'
+  requires 'TextMate'
 
   # Other
   requires 'Skype.app'

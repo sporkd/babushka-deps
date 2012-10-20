@@ -1,0 +1,10 @@
+{
+  "test greeting": {
+    "message": "Good day",
+    "greeting_message": "Good day"
+  },
+  "test farewell": {
+    "message": "Later on",
+    "farewell_message": "Later on"
+  }
+}

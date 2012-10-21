@@ -7,6 +7,7 @@ dep 'env' do
   # Homebrew
   requires 'packages'
   requires 'imagemagick'
+  requires 'postgresql'
   requires 'redis'
   requires 'mongodb'
   requires 'pow'

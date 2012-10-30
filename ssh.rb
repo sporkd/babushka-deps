@@ -8,4 +8,7 @@ dep 'ssh keys generated', :ssh_dir, :ssh_password do
   meet {
     shell "ssh-keygen -t rsa -N #{ ssh_password } -f #{ ssh_dir }/id_rsa"
   }
+  after {
+    shell "/usr/bin/ssh-add -K"
+  }
 end

@@ -1,5 +1,3 @@
-require 'fileutils'
-
 meta :launchd, :for => :osx do
   accepts_value_for :destination, "~/Library/LaunchAgents"
 
@@ -13,7 +11,7 @@ meta :launchd, :for => :osx do
       (destination / plist)
     end
 
-    requires 'launchd plist copied'.with(
+    requires 'launchd plist linked'.with(
       :package => basename,
       :plist => plist,
       :destination => destination
@@ -28,7 +26,7 @@ meta :launchd, :for => :osx do
   }
 end
 
-dep 'launchd plist copied', :package, :plist, :destination, :for => :osx do
+dep 'launchd plist linked', :package, :plist, :destination, :for => :osx do
   def brew_path
     Babushka::BrewHelper.brew_path_for(package)
   end
@@ -42,13 +40,14 @@ dep 'launchd plist copied', :package, :plist, :destination, :for => :osx do
   end
 
   met? {
-    plist_path.exists? &&
-    FileUtils.compare_file(plist_template, plist_path)
+    plist_path.exists? && plist_path.symlink? &&
+    File.readlink(plist_path) == plist_template.to_s
   }
   meet {
-    plist_template.copy destination.p
-  }
-  after {
-    log shell "launchctl unload -w '#{plist_path}'"
+    if plist_path.exists?
+      log shell "launchctl unload -w '#{plist_path}'"
+      plist_path.remove
+    end
+    log shell "ln -sfv #{plist_template} #{plist_path}"
   }
 end

@@ -1,12 +1,14 @@
 dep 'postgresql' do
   requires 'postgresql.managed'
   requires 'postgresql.launchd'
+  requires 'postgres superuser'
 end
 
 dep 'postgresql.managed' do
   provides "psql"
 
   after {
+    # http://tammersaleh.com/posts/installing-postgresql-for-rails-3-1-on-lion
     unless login_shell("echo $PATH") =~ /\/usr\/local\/bin:.*\/usr\/bin(:|$)/
       case shell("echo $SHELL").p.basename
       when 'zsh'
@@ -26,3 +28,13 @@ dep 'postgresql.managed' do
 end
 
 dep 'postgresql.launchd'
+
+dep 'postgres superuser', :role_name do
+  role_name.ask("Role name for postgres superuser").default("admin")
+  met? {
+    shell "psql postgres -tAc \"SELECT * FROM pg_roles WHERE rolname='#{role_name}'\""
+  }
+  meet {
+    log shell "createuser --superuser -p #{role_name}"
+  }
+end

@@ -1,3 +1,5 @@
+require 'fileutils'
+
 dep 'Sublime Text 2' do
   requires 'Sublime Text 2.app'
   requires 'Sublime Text 2 theme.cloned'
@@ -6,8 +8,9 @@ dep 'Sublime Text 2' do
 end
 
 dep 'Sublime Text 2.app' do
-  source 'http://c758482.r82.cf2.rackcdn.com/Sublime Text 2.0.1.dmg'
+  source 'http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.1.dmg'
   version '>= 2.0.1'
+  prefix %w[/Applications]
 
   def bin_dir
     (app_location / provides / "Contents/SharedSupport/bin")

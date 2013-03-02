@@ -29,12 +29,12 @@ end
 
 dep 'postgresql.launchd'
 
-dep 'postgres superuser', :role_name do
-  role_name.ask("Role name for postgres superuser").default("admin")
+dep 'postgres superuser', :role do
+  role.ask("Role name for postgres superuser").default("admin")
   met? {
-    shell "psql postgres -tAc \"SELECT * FROM pg_roles WHERE rolname='#{role_name}'\""
+    shell "psql postgres -tAc \"SELECT * FROM pg_roles WHERE rolname='#{role}'\""
   }
   meet {
-    log shell "createuser --superuser -p #{role_name}"
+    log shell "createuser --superuser -p #{role}"
   }
 end

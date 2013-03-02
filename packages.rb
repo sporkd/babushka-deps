@@ -8,7 +8,8 @@ dep 'packages' do
     'tig.managed',
     'tmux.managed',
     'tree.managed',
-    'wget.managed'
+    'wget.managed',
+    'phantomjs.managed'
   ]
 end
 
@@ -27,3 +28,5 @@ dep 'tmux.managed'
 dep 'tree.managed'
 
 dep 'wget.managed'
+
+dep 'phantomjs.managed'

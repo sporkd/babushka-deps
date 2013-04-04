@@ -5,6 +5,18 @@ meta :shell_setup do
   }
 end
 
+dep 'fish' do
+  requires 'fish.shell_setup'
+end
+
+dep 'fish.shell_setup' do
+  requires 'fishfish.managed'
+end
+
+dep 'fishfish.managed' do
+  provides 'fish'
+end
+
 dep 'zsh', :username do
   username.default!(shell('whoami'))
   requires 'zsh.shell_setup'

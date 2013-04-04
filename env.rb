@@ -1,8 +1,10 @@
 dep 'env' do
   requires 'build tools'
+  # TODO: Install http://xquartz.macosforge.org and re-login
   requires 'osx prefs'
   requires 'dotfiles'.with(:git_repo => 'git@github.com:sporkd/dotfiles.git')
   requires 'zsh'
+  requires 'fish'
 
   # Homebrew
   requires 'packages'
